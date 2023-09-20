@@ -68,4 +68,7 @@ button:focus-visible {
   }
 }
 
-
+.footerContent{
+  position:absolute;
+  bottom:0;
+}
