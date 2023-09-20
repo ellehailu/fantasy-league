@@ -11,3 +11,5 @@ function Leaderboard(){
 }
 
 export default Leaderboard;
+
+//Fetch the list of users and their current total score
