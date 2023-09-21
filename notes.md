@@ -7,4 +7,4 @@
 - Unordered list: class name = selectionList
 - image in list: class name = selectionPhoto
 
-![firebase authentication tutorial](https://www.youtube.com/watch?v=9bXhf_TELP4)
+[firebase authentication tutorial](https://www.youtube.com/watch?v=9bXhf_TELP4)
