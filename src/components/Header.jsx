@@ -6,7 +6,6 @@ import Leaderboard from './Leaderboard'
 function Header(){
     return(
         <React.Fragment>
-            <h2>Header: Fantasy League</h2>
             <button className="headerButton" href="/">Home</button>
              <button className="headerButton">
                  Other Seasons</button> 
