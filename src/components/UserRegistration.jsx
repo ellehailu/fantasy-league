@@ -1,6 +1,6 @@
 // import React from "react";
 import { useState } from "react"
-import { createUserWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth"
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import { auth } from "./../firebaseConfig"
 
 function AccountManagement(){
@@ -27,7 +27,13 @@ function AccountManagement(){
     };
 
     const logIn = async () => {
-        
+        try {
+            const user = await signInWithEmailAndPassword(auth, logInEmail, logInPassword)
+            console.log(user)
+        }
+        catch(error){
+            console.log(error.message)
+        }
     };
 
     const logOut = async () => {
@@ -57,10 +63,11 @@ function AccountManagement(){
                     setLogInPassword(event.target.value);
                 }}/>
 
-                <button>Login</button>
+                <button onClick={logIn}>Login</button>
             </div>
             <div className="userSignOut">
                 <h3>User logged in:</h3>
+                {/* if there is a user logged in/current user, then name will be displayed */}
                 {user?.email}
                 <button onClick={logOut}>Sign out</button>
             </div>
