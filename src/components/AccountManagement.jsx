@@ -64,10 +64,6 @@ function AccountManagement() {
   };
 
 
-const logOut = async () => {
-  await signOut(auth);
-  };
-
   return (
     <div className="accountManagement">
       {!user &&<div className="userRegistration">
@@ -94,13 +90,6 @@ const logOut = async () => {
                 }}/>
         {error && <p>{error}</p>}
         <button onClick={logIn}>Login</button>
-      </div>}
-      {user && <div className="userSignOut">
-        <h3>User logged in:</h3>
-        {user?.email}
-        {error && <p>{error}</p>}
-        <button onClick={logOut}>Sign out</button>
-
       </div>}
     </div>
   );
