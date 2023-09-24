@@ -1,20 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "./Header";
 import Home from "./Home";
 import Footer from "./Footer";
-import UserRegistration from "./UserRegistration"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AccountManagement from "./AccountManagement";
 
 function App(){
+  const[user, setUser] = useState(null);
+
   return (
-    <Router>
+    <div>
       <Header />
-        <Routes>
-          <Route path="/UserRegistration" element={<UserRegistration />}></Route>
-          <Route path="/" element={<Home/>}/>
-        </Routes>
-      <Footer />
-    </Router>
+      <Home />
+      <Footer/>
+
+    </div>
   );
 }
 

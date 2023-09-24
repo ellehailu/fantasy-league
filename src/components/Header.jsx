@@ -1,7 +1,12 @@
 import React from "react";
-import Leaderboard from './Leaderboard'
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 function Header(){
+
+function SignOut(){
+    signOut(auth)
+}
     return(
         <React.Fragment>
             <button className="headerButton" href="/">Home</button>
@@ -9,7 +14,8 @@ function Header(){
                  Other Seasons</button> 
             <button className="headerButton">Leaderboard</button>
             <button className="headerButton">Weekly draft</button>
-            <button className="headerButton" >SignOut</button>
+            <button className="headerButton" onClick={SignOut}>SignOut</button>
+            {console.log("user logged out")}
 
         </React.Fragment>
     )

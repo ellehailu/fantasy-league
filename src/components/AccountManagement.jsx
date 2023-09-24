@@ -6,6 +6,7 @@ import {
   signOut
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import Selections from "./Selections";
 
 
 function AccountManagement() {
@@ -63,8 +64,8 @@ function AccountManagement() {
   };
 
 
-  const logOut = async () => {
-    await signOut(auth);
+const logOut = async () => {
+  await signOut(auth);
   };
 
   return (
@@ -99,6 +100,7 @@ function AccountManagement() {
         {user?.email}
         {error && <p>{error}</p>}
         <button onClick={logOut}>Sign out</button>
+
       </div>}
     </div>
   );

@@ -5,7 +5,13 @@
 import React from "react";
 
 function Seasons(){
-
+    return(
+        <React.Fragment>
+            <p>Golden Bachelor</p>
+            <p>Bachelor in Paradise</p>
+        </React.Fragment>
+       
+    )
 }
 
 export default Seasons;
