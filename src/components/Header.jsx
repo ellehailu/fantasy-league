@@ -1,6 +1,4 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-
 import Leaderboard from './Leaderboard'
 
 function Header(){
@@ -9,9 +7,10 @@ function Header(){
             <button className="headerButton" href="/">Home</button>
              <button className="headerButton">
                  Other Seasons</button> 
-            <button className="headerButton" href={<Leaderboard />}>Leaderboard</button>
+            <button className="headerButton">Leaderboard</button>
             <button className="headerButton">Weekly draft</button>
-            <button className="headerButton">Logout</button>
+            <button className="headerButton" >SignOut</button>
+
         </React.Fragment>
     )
 }

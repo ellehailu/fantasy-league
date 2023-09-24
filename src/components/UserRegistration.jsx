@@ -1,78 +1,8 @@
-// import React from "react";
-import { useState } from "react"
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth"
-import { auth } from "./../firebaseConfig"
-
-function AccountManagement(){
-    const [registerEmail, setRegisterEmail] = useState("")
-    const [registerPassword, setRegisterPassword] = useState("")
-    const [logInEmail, setLogInEmail] = useState ("")
-    const [logInPassword, setLogInPassword] = useState("")
-
-    //grabs the current user that is logged in
-    const [user, setUser] = useState({});
-
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser)
-    })
-
-    const register = async () => {
-        try {
-            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
-            console.log(user)
-        }
-        catch(error) {
-            console.log(error.message)
-        }
-    };
-
-    const logIn = async () => {
-        try {
-            const user = await signInWithEmailAndPassword(auth, logInEmail, logInPassword)
-            console.log(user)
-        }
-        catch(error){
-            console.log(error.message)
-        }
-    };
-
-    const logOut = async () => {
-        await signOut(auth)
-    };
+import React from "react";
 
 
-    return(
-        <div className="accountManagement">
-            <div className="userRegistration">
-                <h3> Register User</h3>
-                <input type="email" placeholder="Email..." onChange={(event) => {
-                    setRegisterEmail(event.target.value);
-                }}/>
-                <input type="password" placeholder="Password..." onChange={(event) => {
-                    setRegisterPassword(event.target.value);
-                }}/>
+function UserRegistration(){
 
-                <button onClick={register}>Create user</button>
-            </div>
-            <div className="userLogin">
-                <h3>Login</h3>
-                <input type="email" placeholder="Email..." onChange={(event) => {
-                    setLogInEmail(event.target.value);
-                }}/>
-                <input type="password" placeholder="Password..." onChange={(event) => {
-                    setLogInPassword(event.target.value);
-                }}/>
-
-                <button onClick={logIn}>Login</button>
-            </div>
-            <div className="userSignOut">
-                <h3>User logged in:</h3>
-                {/* if there is a user logged in/current user, then name will be displayed */}
-                {user?.email}
-                <button onClick={logOut}>Sign out</button>
-            </div>
-        </div>
-    )
 }
 
-export default AccountManagement;
+export default UserRegistration;

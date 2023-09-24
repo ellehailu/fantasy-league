@@ -61,11 +61,6 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #B76E79;
-    color: white;
-    margin: 1%;
-  }
 }
 
 .footerContent{
@@ -75,4 +70,10 @@ button:focus-visible {
 
 .selectionPhoto{
   border-radius: 100%;
+}
+
+.headerButton {
+  background-color: #B76E79;
+  color: white;
+  margin: 1%;
 }

@@ -2,14 +2,19 @@ import React from "react";
 import Header from "./Header";
 import Home from "./Home";
 import Footer from "./Footer";
+import UserRegistration from "./UserRegistration"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App(){
   return (
-    <React.Fragment>
+    <Router>
       <Header />
-      <Home />
+        <Routes>
+          <Route path="/UserRegistration" element={<UserRegistration />}></Route>
+          <Route path="/" element={<Home/>}/>
+        </Routes>
       <Footer />
-    </React.Fragment>
+    </Router>
   );
 }
 
