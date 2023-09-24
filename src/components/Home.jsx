@@ -3,7 +3,7 @@ import Selections from "./Selections";
 import AccountManagement from "./AccountManagement";
 // import Leaderboard from "./Leaderboard";
 
-function Home( {user} ){
+function Home( {user}){
     return(
         <React.Fragment>
             <hr/>
