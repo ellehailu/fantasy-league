@@ -1,9 +1,9 @@
 import React from "react";
 
-function Footer(){
-    return(
+function Footer() {
+    return (
         <React.Fragment>
-            <p className="footerContent">Footer content</p>
+            <p className="footerContent">Elle Hailu - Capstone, 2023</p>
         </React.Fragment>
     )
 }
