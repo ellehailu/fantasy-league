@@ -82,3 +82,8 @@ button:focus-visible {
   color: white;
   margin: 1%;
 }
+
+.draftPhoto {
+  max-height: 75px;
+  width: auto;
+}

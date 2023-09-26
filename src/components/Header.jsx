@@ -18,8 +18,6 @@ const logOut = async () => {
             <button className="headerButton">Leaderboard</button>
             <button className="headerButton">Weekly draft</button>
             <button className="headerButton" onClick={logOut}>SignOut</button>
-            {console.log("user logged out")}
-
         </React.Fragment>
     )
 }

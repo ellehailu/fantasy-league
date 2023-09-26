@@ -2,7 +2,7 @@
 
 // A form for the user to make a selection
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function WeeklyDraft() {
 
@@ -11,8 +11,10 @@ function WeeklyDraft() {
     const [weeklyGbSelections, setWeeklyGbSelections] = useState([]);
     const [gbSelections, setGbSelections] = useState([]);
 
+    // event handler to handle checked boxes
     const handleCheckboxChange = (event) => {
         const { value, checked } = event.target
+
 
         if (checked) {
             setWeeklyGbSelections((prevSelection) => [...prevSelection, value]);
@@ -20,10 +22,12 @@ function WeeklyDraft() {
 
         else {
             setWeeklyGbSelections((prevSelection) =>
-                prevSelection.filter((item) => item !== value)
+                prevSelection.filter((contestant) => contestant !== value)
             );
         }
     }
+
+    // makes an api call to get list of contestants to display in selection form
     useEffect(() => {
         fetch(`https://localhost:5001/api/Gb`)
             .then(response => {
@@ -58,7 +62,8 @@ function WeeklyDraft() {
     return (
         <div>
             <div>
-                {/* Add an event listener and check which contestants are seleceted, then push those contestants into 'weeklySelection' array */}
+                {/* Add an event listener and check which contestants are selected, then push those contestants into 'weeklyGbSelection' array */}
+
                 {/* display selected contestants */}
 
                 <h3>Your selection for this week:</h3>
@@ -82,11 +87,12 @@ function WeeklyDraft() {
                                         type="checkbox"
                                         name="selectedContestant"
                                         value={gbContestants.name}
+                                        // call event handler function when clicked 
                                         onChange={handleCheckboxChange} />
 
                                     <h3>
                                         {gbContestants.name}: {gbContestants.age} - {gbContestants.hometown}</h3>
-                                    <img className="contestantPhoto" src={gbContestants.photo} />
+                                    <img className="draftPhoto" src={gbContestants.photo} />
                                 </label>
                             </li>
                         ))}

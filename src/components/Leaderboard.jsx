@@ -8,6 +8,7 @@ function Leaderboard(){
             <h1>Leaderboard</h1>
             <h3>Top Scores</h3>
             {/* Loop through list of users and display names based on total scores (in descending order) */}
+            
         </React.Fragment>
     )
 }
