@@ -1,12 +1,8 @@
-import { useState, useEffect } from "react";
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut
-} from "firebase/auth";
+import { useState } from "react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import Selections from "./Selections";
+import useUser from "../hooks/checkUser";
+
 
 
 function AccountManagement() {
@@ -15,16 +11,10 @@ function AccountManagement() {
   const [logInEmail, setLogInEmail] = useState("");
   const [logInPassword, setLogInPassword] = useState("");
 
-  // Grabs the current user that is logged in
-  const [user, setUser] = useState({});
+  const [loggedIn, user] = useUser()
+ 
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe(); // Cleanup the subscription when the component unmounts
-  }, []);
 
   const clearInputFields = () => {
     setRegisterEmail("");
@@ -63,31 +53,30 @@ function AccountManagement() {
     }
   };
 
-
   return (
     <div className="accountManagement">
-      {!user &&<div className="userRegistration">
-      <h3>Register User</h3>
-        <input type="email" placeholder="Email..." 
-        value={registerEmail}
-        onChange={(event) => {
-                    setRegisterEmail(event.target.value);
-                }}/>
+      {!user && <div className="userRegistration">
+        <h3>Register User</h3>
+        <input type="email" placeholder="Email..."
+          value={registerEmail}
+          onChange={(event) => {
+            setRegisterEmail(event.target.value);
+          }} />
         <input type="password" placeholder="Password..."
-        value={registerPassword} onChange={(event) => {
-                    setRegisterPassword(event.target.value);
-                }}/>
+          value={registerPassword} onChange={(event) => {
+            setRegisterPassword(event.target.value);
+          }} />
         {error && <p>{error}</p>}
         <button onClick={register}>Create user</button>
       </div>}
-      {!user &&<div className="userLogin">
+      {!user && <div className="userLogin">
         <h3>Login</h3>
         <input type="email" placeholder="Email..." onChange={(event) => {
-                    setLogInEmail(event.target.value);
-                }}/>
-                <input type="password" placeholder="Password..." onChange={(event) => {
-                    setLogInPassword(event.target.value);
-                }}/>
+          setLogInEmail(event.target.value);
+        }} />
+        <input type="password" placeholder="Password..." onChange={(event) => {
+          setLogInPassword(event.target.value);
+        }} />
         {error && <p>{error}</p>}
         <button onClick={logIn}>Login</button>
       </div>}

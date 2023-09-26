@@ -1,38 +1,35 @@
-import React from "react";
-import Selections from "./Selections";
 import AccountManagement from "./AccountManagement";
-import WeeklyDraft from "./WeeklyDraft";
+import useUser from "../hooks/checkUser";
+import SplashPage from "./SplashPage";
 // import Leaderboard from "./Leaderboard";
 
-function Home({ user }) {
-    return (
-        <React.Fragment>
-            <hr />
-            <h2>Welcome to the bachelor franchise fantasy league </h2>
-            <CustomContent user={user} />
-            <WeeklyDraft />
-        </React.Fragment>
-    )
-}
+function Home() {
 
-function CustomContent({ user }) {
+    const [loggedIn, user] = useUser()
+    // const auth = getAuth();
+
+
     console.log(user)
-    console.log("custom content accessed")
-    if (!user) {
+    if (user) {
         return (
             <div>
-                <AccountManagement />
+
+                <SplashPage />
             </div>
         );
     }
-    else if (user) {
+    else {
         return (
             <div>
-                <Selections />
+                <h6>Welcome to the bachelor franchise fantasy league</h6>
+                <p>Please register for an account or login</p>
+                <AccountManagement />
             </div>
         )
+
     }
 }
+
 
 export default Home;
 
