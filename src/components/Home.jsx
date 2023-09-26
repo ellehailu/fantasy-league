@@ -1,6 +1,8 @@
 import AccountManagement from "./AccountManagement";
 import useUser from "../hooks/UseUser";
 import SplashPage from "./SplashPage";
+import Seasons from "./Seasons";
+
 // import Leaderboard from "./Leaderboard";
 
 function Home() {
@@ -13,7 +15,7 @@ function Home() {
     if (user) {
         return (
             <div>
-                <SplashPage />
+                <Seasons />
             </div>
         );
     }
