@@ -1,6 +1,7 @@
 import React from "react";
 import Selections from "./Selections";
 import AccountManagement from "./AccountManagement";
+import WeeklyDraft from "./WeeklyDraft";
 // import Leaderboard from "./Leaderboard";
 
 function Home({ user }) {
@@ -9,7 +10,7 @@ function Home({ user }) {
             <hr />
             <h2>Welcome to the bachelor franchise fantasy league </h2>
             <CustomContent user={user} />
-            <Selections />
+            <WeeklyDraft />
         </React.Fragment>
     )
 }

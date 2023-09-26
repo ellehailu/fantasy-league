@@ -58,6 +58,8 @@ function Selections() {
         return <h1>...Loading...</h1>
     }
     else {
+
+        // display name on a flipable card that shows the bio and photo when user hovers over the name
         console.log("reached 'else' branch")
         return (
             <React.Fragment>
