@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import useUser from "../hooks/checkUser";
+import useUser from "../hooks/UseUser";
 
 
 
@@ -12,7 +12,7 @@ function AccountManagement() {
   const [logInPassword, setLogInPassword] = useState("");
 
   const [loggedIn, user] = useUser()
- 
+
   const [error, setError] = useState(null);
 
 

@@ -1,11 +1,16 @@
-import React from "react";
+import useUser from "../hooks/UseUser";
 
 function splashPage() {
-    return (
-        <div>
-            <h1>Welcome to the bachelor franchise fantasy league</h1>
-        </div>
-    )
+
+    const [loggedIn, user] = useUser()
+
+    if (user) {
+        return (
+            <div>
+                <h2>Welcome {user.email}</h2>
+            </div>
+        )
+    }
 }
 
 export default splashPage;
