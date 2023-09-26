@@ -3,29 +3,29 @@ import Selections from "./Selections";
 import AccountManagement from "./AccountManagement";
 // import Leaderboard from "./Leaderboard";
 
-function Home( {user}){
-    return(
+function Home({ user }) {
+    return (
         <React.Fragment>
-            <hr/>
+            <hr />
             <h2>Welcome to the bachelor franchise fantasy league </h2>
             <CustomContent user={user} />
+            <Selections />
         </React.Fragment>
     )
 }
 
-function CustomContent({user}){
+function CustomContent({ user }) {
     console.log(user)
     console.log("custom content accessed")
-    if(!user){
-        return(
+    if (!user) {
+        return (
             <div>
-                <p>Please log in to your account</p>
                 <AccountManagement />
             </div>
         );
     }
-    else if(user) {
-        return(
+    else if (user) {
+        return (
             <div>
                 <Selections />
             </div>

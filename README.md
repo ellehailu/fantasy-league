@@ -1,8 +1,14 @@
-# React + Vite
+#### Installation Instruction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Clone repository 
+- Create .env file in root directory
+- Update the contents of your .env file with the following 
+```
+REACT_APP_FIREBASE_API_KEY: ["YOUR_API_KEY"],
+REACT_APP_FIREBASE_AUTH_DOMAIN: ["YOUR_AUTH_DOMAIN"],
+REACT_APP_FIREBASE_PROJECT_ID: ["YOUR_PROJECT_ID"],
+REACT_APP_FIREBASE_STORAGE_BUCKET: ["YOUR_STORAGE_BUCKET"],
+REACT_APP_FIREBASE_SENDER_ID: ["YOUR_SENDER_ID"],
+REACT_APP_FIREBASE_APP_ID: ["YOUR_APP_ID"],
+REACT_APP_FIREBASE_MEASUREMENT_ID: "G-ZNG2VTT851"
+```

@@ -2,20 +2,86 @@
 
 // connect to weekly draft button in the header
 
-function Selections(){
-    return(
-        <div className="selectionContainer">
-            <p>These are your weekly selection</p>
-            <ul>
-                <li>
-                    - first contestant 
-                </li>
-            </ul>
-            {/* <ul className="selectionList">
-                <li className="selectionPhoto"><img src="https://cdn1.edgedatg.com/aws/v2/abc/BachelorinParadise/person/4292042/e00e354fe7bce194bba130edb606b033/1600x640-Q90_e00e354fe7bce194bba130edb606b033.jpg"/></li>
-            </ul> */}
-        </div>
-    )
+import React, { useState, useEffect } from "react";
+
+function Selections() {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [bipSelections, setBipSelections] = useState([]);
+    const [gbSelections, setGbSelections] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://localhost:5001/api/Bip`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`${response.status}: ${response.statusText}`);
+                }
+                else {
+                    return response.json()
+                }
+            })
+            .then((jsonifiedResponse) => {
+                console.log(jsonifiedResponse)
+                setBipSelections(jsonifiedResponse)
+                setIsLoaded(true)
+            })
+            .catch((error) => {
+                setError(error.message)
+                setIsLoaded(true)
+                console.log(error)
+            });
+        fetch(`https://localhost:5001/api/Gb`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`${response.status}: ${response.statusText}`);
+                }
+                else {
+                    return response.json()
+                }
+            })
+            .then((jsonifiedResponse) => {
+                console.log(jsonifiedResponse)
+                setGbSelections(jsonifiedResponse)
+                setIsLoaded(true)
+            })
+            .catch((error) => {
+                setError(error.message)
+                setIsLoaded(true)
+                console.log(error)
+            });
+    }, [], [])
+
+    if (error) {
+        return <h1>Error: {error}</h1>
+    }
+    else if (!isLoaded) {
+        return <h1>...Loading...</h1>
+    }
+    else {
+        console.log("reached 'else' branch")
+        return (
+            <React.Fragment>
+                <h1>BIP Selections</h1>
+                <ul>
+                    {bipSelections.map((bipContestants, index) =>
+                        <li key={index}>
+                            <h3>{bipContestants.name}</h3>
+                            <p>{bipContestants.pastAppearance}</p>
+                            <img className="contestantPhoto" src={bipContestants.photo}></img>
+                        </li>)}
+                </ul>
+                <h1>GB Selections</h1>
+                <ul>
+                    {gbSelections.map((gbContestants, index) =>
+                        <li key={index}>
+                            <h3>{gbContestants.name}: {gbContestants.age} - {gbContestants.hometown}</h3>
+                            <p>{gbContestants.bio}</p>
+                            <img className="contestantPhoto" src={gbContestants.photo}></img>
+                        </li>)}
+                </ul>
+            </React.Fragment>
+        )
+    }
 }
 
 export default Selections;

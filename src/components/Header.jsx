@@ -9,7 +9,7 @@ const logOut = async () => {
     await signOut(auth);
     };
 
-let navBar = null;
+
  return(
         <React.Fragment>
             <button className="headerButton" href="/">Home</button>

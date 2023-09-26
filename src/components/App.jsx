@@ -1,17 +1,16 @@
-import React, {useState} from "react";
+
 import Header from "./Header";
 import Home from "./Home";
 import Footer from "./Footer";
 import AccountManagement from "./AccountManagement";
 
-function App(){
-  const[user, setUser] = useState(null);
-
+function App() {
   return (
     <div>
       <Header />
-      <Home user={user}/>
-      <Footer/>
+      <Home />
+      <AccountManagement />
+      <Footer />
 
     </div>
   );
