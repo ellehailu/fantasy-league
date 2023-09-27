@@ -154,6 +154,17 @@ p {
   font-size: 14px;
 }
 
+ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+
+.label input[type='checkbox']{
+  opacity: 0;
+  position: absolute;
+  left: -9999px;
+}
 
  #colors
  { background-color: #B76E79;

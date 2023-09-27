@@ -2,6 +2,7 @@ import AccountManagement from "./AccountManagement";
 import useUser from "../hooks/UseUser";
 import SplashPage from "./SplashPage";
 import Seasons from "./Seasons";
+import WeeklyDraft from "./WeeklyDraft"
 
 // import Leaderboard from "./Leaderboard";
 
@@ -15,7 +16,7 @@ function Home() {
     if (user) {
         return (
             <div>
-                <Seasons />
+                <WeeklyDraft />
             </div>
         );
     }
