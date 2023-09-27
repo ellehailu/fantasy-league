@@ -48,6 +48,8 @@ button {
 
 button:hover {
   border-color: #646cff;
+  transform: scale(1.125);  
+  transition: all .3s ease;   
 }
 
 button:focus,
@@ -62,7 +64,7 @@ button:focus-visible {
   }
 
   a:hover {
-    color: #747bff;
+    color: #B76E79;
   }
 }
 
@@ -80,12 +82,24 @@ button:focus-visible {
 
 }
 
+.header {
+  background-color: white;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  height: 10%;
+}
 .headerButton {
   background-color: #B76E79;
+
+  font-size: auto;
   color: white;
   margin: 1%;
 }
 
+/* Seasons */
 .draftPhoto {
   max-height: 75px;
   width: auto;
@@ -154,16 +168,52 @@ p {
   font-size: 14px;
 }
 
-ul{
-  list-style-type: none;
-  padding: 0;
-}
 
+
+/* Weekly draft */
 
 .label input[type='checkbox']{
   opacity: 0;
   position: absolute;
   left: -9999px;
+}
+
+ul{
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+
+/* splash page */
+
+.splashContainer {
+  margin-top: 10%;
+}
+
+.listContainer {
+  backdrop-filter: blur(16px)
+  saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.25);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);  
+    padding: 38px;  
+    filter: drop-shadow(0 30px 10px 
+  rgba(0,0,0,0.125));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    text-align: center;
+    margin: 5%;
+}
+
+.listContainer:hover{
+  transform: scale(1.125);  
+  border-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0,0,0,0.125));
+  transition: all .3s ease;    
 }
 
  #colors

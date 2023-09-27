@@ -11,14 +11,14 @@ const logOut = async () => {
 
 
  return(
-        <React.Fragment>
+        <div className="header">
             <button className="headerButton" href="/">Home</button>
-             <button className="headerButton">
+            <button className="headerButton">
                  Other Seasons</button> 
             <button className="headerButton">Leaderboard</button>
             <button className="headerButton">Weekly draft</button>
             <button className="headerButton" onClick={logOut}>SignOut</button>
-        </React.Fragment>
+        </div>
     )
 }
 

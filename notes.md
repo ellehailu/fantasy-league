@@ -1,3 +1,14 @@
+### Current to-do-list
+
+- Add functionality to nav bar
+- Update nav bar styling
+- 
+- 
+- 
+- 
+- Figure out scoring and leaderboard
+
+
 ## Styling notes
 ### Buttons
 - Header buttons: class name = headerButtons
