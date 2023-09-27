@@ -64,52 +64,52 @@ function Seasons() {
     else {
 
         // display name on a flipable card that shows the bio and photo when user hovers over the name
-        console.log("reached 'else' branch")
-        return (
-            <div className="cardContainer">
-                <button>Bachelor in Paradise</button>
-                <button>Golden Bachelor</button>
-                <h1>BIP Selections</h1>
-                <div className="contestantCard">
-                <ul>
-                    {bipSelections.map((bipContestants, index) =>
-                        <li key={index}>
-                            <div className="card">
-                                <div className="card-inner">
-                                    <div className="card-front">
+    console.log("reached 'else' branch")
+    return (
+        <div className="cardContainer">
+            <button>Bachelor in Paradise</button>
+            <button>Golden Bachelor</button>
+            <h1>BIP Selections</h1>
+            <div className="contestantCard">
+            <ul>
+                {bipSelections.map((bipContestants, index) =>
+                    <li key={index}>
+                        <div className="card">
+                            <div className="card-inner">
+                                <div className="card-front">
                                     <img className="contestantPhoto" src={bipContestants.photo}></img>
-                                    </div>
-                           <div className="card-back">
+                                </div>
+                        <div className="card-back">
                             <h3>{bipContestants.name}</h3>
                             <p>{bipContestants.pastAppearance}</p>
-                            </div>
-                            </div>
-                            </div>
-                        </li>)}
-                </ul>
-                </div>
-
-
-                <h1>GB Selections</h1>
-                <div className="contestantCard">
-                    <ul>
-                        {gbSelections.map((gbContestants, index) =>
-                            <li key={index}>
-                                <div className="card">
-                                    <div className="card-inner">
-                                        <div className="card-front">
-                                        <img className="contestantPhoto" src={gbContestants.photo}></img>
-                                        </div>
-                                        <div className="card-back">
-                                <h3>{gbContestants.name}: {gbContestants.age} - {gbContestants.hometown}</h3>
-                                <p>{gbContestants.bio}</p>
-                                </div>
-                                </div>
-                                </div>
-                            </li>)}
-                        </ul>
+                        </div>
                     </div>
-            </div>
+                </div>
+            </li>)}
+        </ul>
+    </div>
+
+
+        <h1>GB Selections</h1>
+        <div className="contestantCard">
+            <ul>
+                {gbSelections.map((gbContestants, index) =>
+                    <li key={index}>
+                        <div className="card">
+                            <div className="card-inner">
+                                <div className="card-front">
+                                    <img className="contestantPhoto" src={gbContestants.photo}></img>
+                                </div>
+                            <div className="card-back">
+                        <h3>{gbContestants.name}: {gbContestants.age} - {gbContestants.hometown}</h3>
+                        <p>{gbContestants.bio}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>)}
+            </ul>
+        </div>
+    </div>
         )
     }
 }

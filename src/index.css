@@ -1,18 +1,18 @@
-/* :root {
+:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #F0BBC3;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-} */
+}
 
 /* a {
   font-weight: 500;
@@ -91,11 +91,11 @@ button:focus-visible {
   width: auto;
 }
 
-/* .gbCard {
+.contestantCard {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-} */
+}
 
 .card {
   width:600px;
@@ -123,7 +123,7 @@ button:focus-visible {
 }
 
 .card-front {
-  background-color: #f0f0f0;
+  background-color:#B76E79;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +131,7 @@ button:focus-visible {
 }
 
 .card-back {
-  background-color: #fff;
+  background-color: #F0BBC3;
   transform: rotateY(180deg);
   padding: 20px;
   display: flex;
@@ -153,3 +153,18 @@ h3 {
 p {
   font-size: 14px;
 }
+
+
+ #colors
+ { background-color: #B76E79;
+  background-color: #F0BBC3;
+  background-color: #FF3186;
+  background-color: #FF725C;
+  background-color: #FFB437;
+  background-color: #F9D388;
+  background-color: #FF8F8F;
+  background-color: #FBECE5;
+  background-color: #FFE6D9;
+  background-color: #FFCAD4;
+  background-color: #F3ABB6;
+  background-color: #9F8189;}
