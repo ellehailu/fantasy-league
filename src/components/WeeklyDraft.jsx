@@ -91,12 +91,13 @@ function WeeklyDraft() {
                                         onChange={handleCheckboxChange} />
 
                                     <h3>
-                                        {gbContestants.name}: {gbContestants.age} - {gbContestants.hometown}</h3>
+                                        {gbContestants.name}: {gbContestants.age} - {gbContestants.hometown}  | season total:{gbContestants.seasonTotal}</h3>
                                     <img className="draftPhoto" src={gbContestants.photo} />
                                 </label>
                             </li>
                         ))}
                     </ul>
+                    <button type="submit">Save Selections</button>
                 </form>
             </div>
 
