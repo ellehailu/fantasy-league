@@ -1,4 +1,4 @@
-import React from "react";
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
 
@@ -15,7 +15,7 @@ import { getAuth } from "firebase/auth"
 // } = import.meta.env;
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCgCnAFq9kBNrp5fJ1i1204QakAJuH9hG4",
+  apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_APP_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET,

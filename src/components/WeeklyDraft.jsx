@@ -3,6 +3,7 @@
 // A form for the user to make a selection
 
 import { useState, useEffect } from "react";
+import useUser from "../hooks/UseUser";
 
 function WeeklyDraft() {
 
@@ -10,6 +11,13 @@ function WeeklyDraft() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [weeklyGbSelections, setWeeklyGbSelections] = useState([]);
     const [gbSelections, setGbSelections] = useState([]);
+    const [loggedIn, user] = useUser()
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // take the current user id 
+        // create new variable key/value with player contestant properties 
+    }
 
     // event handler to handle checked boxes
     const handleCheckboxChange = (event) => {
@@ -62,19 +70,8 @@ function WeeklyDraft() {
     return (
         <div>
             <div>
-                {/* Add an event listener and check which contestants are selected, then push those contestants into 'weeklyGbSelection' array */}
-
-                {/* display selected contestants */}
-
-                <h3>Your selection for this week:</h3>
-
-                {weeklyGbSelections.map((selection, index) => (
-                    <li key={index}>{selection}</li>
-                ))}
-            </div>
-            <div>
                 <h1>Weekly Draft</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h1>GB Selections</h1>
                     <ul>
                         {gbSelections.map((gbContestants, index) => (
@@ -100,7 +97,17 @@ function WeeklyDraft() {
                     <button type="submit">Save Selections</button>
                 </form>
             </div>
+            <div>
+                {/* Add an event listener and check which contestants are selected, then push those contestants into 'weeklyGbSelection' array */}
 
+                {/* display selected contestants */}
+
+                <h3>Your selection for this week:</h3>
+
+                {weeklyGbSelections.map((selection, index) => (
+                    <li key={index}>{selection}</li>
+                ))}
+            </div>
         </div>
     )
 }
