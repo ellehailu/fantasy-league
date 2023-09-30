@@ -13,11 +13,45 @@ function WeeklyDraft() {
     const [gbSelections, setGbSelections] = useState([]);
     const [loggedIn, user] = useUser()
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // take the current user id 
-        // create new variable key/value with player contestant properties 
+        // create new variable key/value with player contestant properties
+        const submitDraft = {
+            fbID: user.uid,
+            
+            selectionOneGb: weeklyGbSelections[0],
+            selectionTwoGb: weeklyGbSelections[1],
+            selectionThreeGb: weeklyGbSelections[2],
+            selectionFourGb: weeklyGbSelections[3],
+            selectionFiveGb: weeklyGbSelections[4],
+            playerSeasonTotal: 0,
+            weekNumber: 0
+        }
+        console.log(user.uid)
+
+        // Make a post request to API
+        try {
+            const response = await fetch('https://localhost:5001/api/PlayerContestant', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(submitDraft),
+            });
+
+            if (response.ok){
+                console.log('Draft successfully submitted.');
+            }
+            else{
+                console.error('failed to updated draft')
+            }
+        }
+        catch (error){
+            console.error('Error', error)
+        }
     }
+
 
     // event handler to handle checked boxes
     const handleCheckboxChange = (event) => {
@@ -83,8 +117,7 @@ function WeeklyDraft() {
                                     <input
                                         type="checkbox"
                                         name="selectedContestant"
-                                        value={gbContestants.name}
-                                        // call event handler function when clicked 
+                                        value={gbContestants.seasonTotal}
                                         onChange={handleCheckboxChange} />
 
                                     <h3>
@@ -104,6 +137,7 @@ function WeeklyDraft() {
 
                 <h3>Your selection for this week:</h3>
 
+                {/* currently displaying a list of scores instead of names because value is set to score instead of name */}
                 {weeklyGbSelections.map((selection, index) => (
                     <li key={index}>{selection}</li>
                 ))}
