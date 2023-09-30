@@ -2,7 +2,7 @@
 
 // connect to weekly draft button in the header
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 // Have two selections --one for BIP and one for GB
 

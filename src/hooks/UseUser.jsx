@@ -16,10 +16,10 @@ function useUser() {
 
                     // define uID variable here?
                     // getting user info from firebase to make post request to api
-                    // const uid = user.uid;
-                    // console.log(uid);
-                    // const email = user.email;
-                    // console.log(email)
+                    const uid = user.uid;
+                    console.log(uid);
+                    const email = user.email;
+                    console.log(email)
                 }
 
                 else {
