@@ -41,18 +41,30 @@ function Leaderboard(){
     }
 
     return (
-        <div>
+        <div className="LeaderboardContainer">
+            <div className="BIPLeaderboardContainer">
             <ol>
+                <h2>Bachelor in Paradise Leaderboard</h2>
                 {leaderboard.map((players, index) => (
                     <li key={index}>
                         {players.fbID}: {players.playerSeasonTotal}
                     </li>
                 ))}
             </ol>
+            </div>
+            <div className="GBLeaderboardContainer">
+            <ol>
+                <h2>Golden Bachelor Leaderboard</h2>
+                {leaderboard.map((players, index) => (
+                    <li key={index}>
+                        {players.fbID}: {players.PlayerGbEpisodeTotal}
+                    </li>
+                ))}
+            </ol>
+            </div>
         </div>
+
     )
 }
 
 export default Leaderboard;
-
-//Fetch the list of users and their current total score
