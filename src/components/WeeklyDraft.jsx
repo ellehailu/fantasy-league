@@ -19,6 +19,9 @@ function WeeklyDraft() {
     // Make two forms and two separate post requests 
     const handleGbSubmit = async (event) => {
         event.preventDefault();
+
+
+        console.log(weeklyGbSelections)
         // take the current user id 
         // create new variable key/value with player contestant properties
         const submitGbDraft = {
@@ -29,10 +32,11 @@ function WeeklyDraft() {
             SelectionThreeGb: weeklyGbSelections[2],
             SelectionFourGb: weeklyGbSelections[3],
             SelectionFiveGb: weeklyGbSelections[4],
-            playerEpisodeTotal: weeklyGbSelections[0]+weeklyGbSelections[1]+weeklyGbSelections[2]+weeklyGbSelections[3]+weeklyGbSelections[4],
+            PlayerGbEpisodeTotal: weeklyGbSelections.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0),
             weekNumber: 0
         }
         console.log(user.uid)
+        console.log(submitGbDraft)
 
         // Make a post request to API
         try {
@@ -56,7 +60,41 @@ function WeeklyDraft() {
         }
     }
 
-    
+    const handleBipSubmit = async (event) => {
+        event.preventDefault();
+        const submitBipDraft = {
+            fbID: user.uid,
+            SelectionOneBip: weeklyBipSelections[0],
+            SelectionTwoBip: weeklyBipSelections[1],
+            SelectionThreeBip: weeklyBipSelections[2],
+            SelectionFourBip: weeklyBipSelections[3],
+            SelectionFiveBip: weeklyBipSelections[4],
+            PlayerBipEpisodeTotal: weeklyBipSelections.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0),
+            weekNumber: 0
+        }
+        console.log(user.uid)
+        console.log(submitBipDraft)
+
+        try {
+            const response = await fetch('https://localhost:5001/api/PlayerContestant', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(submitBipDraft),
+            });
+
+            if (response.ok){
+                console.log('Draft successfully submitted.');
+            }
+            else{
+                console.error('failed to updated draft')
+            }
+        }
+        catch (error){
+            console.error('Error', error)
+        }
+    }
 
 
     // event handler to handle checked boxes
@@ -140,6 +178,7 @@ function WeeklyDraft() {
         return <h1>...Loading...</h1>
     }
 
+    console.log(weeklyGbSelections)
     return (
         <div className="weeklyDraft">
             <div>
@@ -154,8 +193,9 @@ function WeeklyDraft() {
                                     <input
                                         type="checkbox"
                                         name="selectedContestant"
-                                        value={gbContestants.name}
-                                        onChange={handleGbCheckboxChange} />
+                                        value={gbContestants.gbContestantId}
+                                        onChange={handleGbCheckboxChange}
+                                         />
                                     <h3>
                                         {gbContestants.name}: {gbContestants.age} - {gbContestants.hometown}</h3>
                                     <img className="draftPhoto" src={gbContestants.photo} />
@@ -167,7 +207,7 @@ function WeeklyDraft() {
                     <button type="submit">Save Golden Bachelor Selections</button>
                 </form>
             </div>
-            <form>
+            <form onSubmit={handleBipSubmit}>
             <div className="BipWeeklyDraft">
                     <h1>Bachelor in Paradise Selections</h1>
                     <ul>
@@ -177,7 +217,7 @@ function WeeklyDraft() {
                                     <input
                                         type="checkbox"
                                         name="selectedContestant"
-                                        value={bipContestants.name} 
+                                        value={bipContestants.bipContestantId} 
                                         onChange={handleBipCheckboxChange} />
                                     <h3>
                                         {bipContestants.name}: {bipContestants.pastAppearance}</h3>
@@ -189,23 +229,6 @@ function WeeklyDraft() {
                     </div>
                     <button type="submit">Save BIP selections</button>
                     </form>
-            <div>
-                {/* Add an event listener and check which contestants are selected, then push those contestants into 'weeklyGbSelection' array */}
-
-                {/* display selected contestants */}
-
-                <h3>Your Golden Bachelor selections for this week:</h3>
-
-                {/* currently displaying a list of scores instead of names because value is set to score instead of name */}
-                {weeklyGbSelections.map((gbSelection, index) => (
-                    <li key={index}>{gbSelection}</li>
-                ))}
-
-                <h3>Your Bachelor in Paradise selections for this week:</h3>
-                {weeklyBipSelections.map((bipSelection, index) => (
-                    <li key={index}>{bipSelection}</li>
-                ))}
-            </div>
         </div>
     )
 }
