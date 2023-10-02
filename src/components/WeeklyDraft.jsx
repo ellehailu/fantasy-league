@@ -21,7 +21,7 @@ function WeeklyDraft() {
         event.preventDefault();
         // take the current user id 
         // create new variable key/value with player contestant properties
-        const submitDraft = {
+        const submitGbDraft = {
             fbID: user.uid,
             
             SelectionOneGb: weeklyGbSelections[0],
@@ -41,7 +41,7 @@ function WeeklyDraft() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(submitDraft),
+                body: JSON.stringify(submitGbDraft),
             });
 
             if (response.ok){
@@ -56,26 +56,39 @@ function WeeklyDraft() {
         }
     }
 
+    
+
 
     // event handler to handle checked boxes
-    const handleCheckboxChange = (event) => {
+    const handleGbCheckboxChange = (event) => {
         const { value, checked } = event.target
 
 
         if (checked) {
             setWeeklyGbSelections((prevGbSelection) => [...prevGbSelection, value]);
-            setWeeklyBipSelections((prevBipSelection) => [...prevBipSelection, value]);
         }
 
         else {
             setWeeklyGbSelections((prevGbSelection) =>
                 prevGbSelection.filter((gbContestant) => gbContestant !== value)
             );
-            setWeeklyBipSelections((prevBipSelection) => 
-                prevBipSelection.filter((bipContestant) => bipContestant !== value)
-            )
         }
     }
+
+    const handleBipCheckboxChange = (event) => {
+        const { value, checked } = event.target
+
+        if(checked) {
+            setWeeklyBipSelections((prevBipSelection) => [...prevBipSelection, value]);
+        }
+
+        else {
+            setWeeklyBipSelections((prevBipSelection) => 
+            prevBipSelection.filter((bipContestant) => bipContestant !== value)
+            );
+        }
+    }
+
 
     // makes an api call to get list of contestants to display in selection form
     useEffect(() => {
@@ -142,7 +155,7 @@ function WeeklyDraft() {
                                         type="checkbox"
                                         name="selectedContestant"
                                         value={gbContestants.name}
-                                        onChange={handleCheckboxChange} />
+                                        onChange={handleGbCheckboxChange} />
                                     <h3>
                                         {gbContestants.name}: {gbContestants.age} - {gbContestants.hometown}</h3>
                                     <img className="draftPhoto" src={gbContestants.photo} />
@@ -151,7 +164,11 @@ function WeeklyDraft() {
                         ))}
                     </ul>
                     </div>
-                    <div className="BipWeeklyDraft">
+                    <button type="submit">Save Golden Bachelor Selections</button>
+                </form>
+            </div>
+            <form>
+            <div className="BipWeeklyDraft">
                     <h1>Bachelor in Paradise Selections</h1>
                     <ul>
                         {bipSelections.map((bipContestants, index) => (
@@ -161,7 +178,7 @@ function WeeklyDraft() {
                                         type="checkbox"
                                         name="selectedContestant"
                                         value={bipContestants.name} 
-                                        onChange={handleCheckboxChange} />
+                                        onChange={handleBipCheckboxChange} />
                                     <h3>
                                         {bipContestants.name}: {bipContestants.pastAppearance}</h3>
                                     <img className="draftPhoto" src={bipContestants.photo} />
@@ -170,9 +187,8 @@ function WeeklyDraft() {
                         ))}
                     </ul>
                     </div>
-                    <button type="submit">Save Selections</button>
-                </form>
-            </div>
+                    <button type="submit">Save BIP selections</button>
+                    </form>
             <div>
                 {/* Add an event listener and check which contestants are selected, then push those contestants into 'weeklyGbSelection' array */}
 
