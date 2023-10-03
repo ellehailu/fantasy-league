@@ -38,15 +38,16 @@ function AdminUI() {
         EpTwelveScore: 0
     })
 
-    const handleChange = (e) => {
+    const handleBipChange = (e) => {
         const { name, value } = e.target;
         setBipContestantInfo({...bipContestantInfo, [name]: value })
     };
 
-    const handleStatusChange = (e) => {
+    const handleBipStatusChange = (e) => {
         setBipContestantInfo({...bipContestantInfo, status: e.target.value });
     };
 
+    // Make POST request to add new BIP contestant
    const handleNewBipSubmit = async(e) => {
         e.preventDefault();
 
@@ -137,21 +138,21 @@ function AdminUI() {
                     name="name"
                     placeholder="name" 
                     value={bipContestantInfo.name}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="string" 
                     name="pastAppearance"
                     placeholder="Past Appearance" 
                     value={bipContestantInfo.pastAppearance}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="string" 
                     name="photo"
                     placeholder="photo url" 
                     value={bipContestantInfo.photo}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <div className="statusRadioButton">
                         <label>
@@ -160,7 +161,7 @@ function AdminUI() {
                             name="status"
                             value="Active"
                             checked={bipContestantInfo.status === 'Active'}
-                            onChange={handleStatusChange}/>Active
+                            onChange={handleBipStatusChange}/>Active
                         </label>
                         <label>
                             <input
@@ -168,7 +169,7 @@ function AdminUI() {
                             name="status"
                             value="InActive"
                             checked={bipContestantInfo.status === 'Active'}
-                            onChange={handleStatusChange}/>InActive
+                            onChange={handleBipStatusChange}/>InActive
                         </label>
                     </div>
                     <input 
@@ -176,84 +177,84 @@ function AdminUI() {
                     name="epOneScore"
                     placeholder="Episode one score" 
                     value={bipContestantInfo.epOneScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epTwoScore"
                     placeholder="Episode two score" 
                     value={bipContestantInfo.epTwoScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epThreeScore"
                     placeholder="Episode Three score" 
                     value={bipContestantInfo.epThreeScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epFourScore"
                     placeholder="Episode Four score" 
                     value={bipContestantInfo.epFourScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epFiveScore"
                     placeholder="Episode Five score" 
                     value={bipContestantInfo.epFiveScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epSixScore"
                     placeholder="Episode Six score" 
                     value={bipContestantInfo.epSixScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epSevenScore"
                     placeholder="Episode Seven score" 
                     value={bipContestantInfo.epSevenScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epEightScore"
                     placeholder="Episode Eight score" 
                     value={bipContestantInfo.epEightScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epNineScore"
                     placeholder="Episode Nine score" 
                     value={bipContestantInfo.epNineScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epTenScore"
                     placeholder="Episode Ten score" 
                     value={bipContestantInfo.epTenScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epElevenScore"
                     placeholder="Episode Eleven score" 
                     value={bipContestantInfo.epElevenScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <input 
                     type="number" 
                     name="epTweleveScore"
                     placeholder="Episode Tweleve score" 
                     value={bipContestantInfo.epTweleveScore}
-                    onChange={handleChange}>
+                    onChange={handleBipChange}>
                     </input>
                     <button type="submit">Add new Bip Contestant</button>
                 </form>
