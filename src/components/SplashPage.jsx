@@ -1,10 +1,11 @@
 import useUser from "../hooks/UseUser";
-import React, {useState} from "react";
+import {useState} from "react";
 import Leaderboard from "./LeaderBoard";
 import WeeklyDraft from "./WeeklyDraft";
 import Seasons from "./Seasons";
+import AdminUI from "./AdminUI"
 
-function splashPage() {
+function SplashPage() {
 
     const [loggedIn, user] = useUser()
     const [selectedComponent, setSelectedComponent] = useState(null)
@@ -26,6 +27,7 @@ function splashPage() {
                     <li className='listContainer' onClick={() => handleItemClick(<Leaderboard />)}>Leaderboard</li>
                     <li className='listContainer' onClick={() => handleItemClick(<WeeklyDraft />)}>Weekly Draft</li>
                     <li className='listContainer' onClick={() => handleItemClick(<Seasons />)}>Other Seasons</li>
+                    <li className='listContainer' onClick={() => handleItemClick(<AdminUI />)}>Admin UI</li>
                     </ul>
                     {selectedComponent}
                 </div>
@@ -34,4 +36,4 @@ function splashPage() {
     }
 }
 
-export default splashPage;
+export default SplashPage;
