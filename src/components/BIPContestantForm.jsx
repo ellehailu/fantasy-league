@@ -58,7 +58,7 @@ function BIPContestantForm(){
                 console.error('Error', error)
             }
         }
-    }
+    
     const handleBipChange = (e) => {
         const { name, value } = e.target;
         setBipContestantInfo({...bipContestantInfo, [name]: value })
@@ -290,5 +290,5 @@ function BIPContestantForm(){
         )
     }
 
-
+}
 export default BIPContestantForm;
