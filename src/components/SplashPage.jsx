@@ -3,7 +3,7 @@ import {useState} from "react";
 import Leaderboard from "./LeaderBoard";
 import WeeklyDraft from "./WeeklyDraft";
 import Seasons from "./Seasons";
-import AdminUI from "./AdminUI"
+import AdminUI from "./Admin/AdminUI"
 
 function SplashPage() {
 

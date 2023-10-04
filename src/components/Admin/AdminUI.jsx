@@ -3,9 +3,8 @@ import BIPContestantForm from "./BIPContestantForm";
 import GBContestantForm from "./GBContestantForm";
 
 
+
 function AdminUI() {
-
-
 
     // handle gbEdit submit (To update weekly scores) [HttpPut]
 

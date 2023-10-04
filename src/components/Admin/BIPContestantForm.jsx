@@ -95,7 +95,7 @@ function BIPContestantForm(){
     }
     else {
 
-        // display name on a flipable card that shows the bio and photo when user hovers over the name
+       
     console.log("reached 'else' branch")
         return (
         <div>
@@ -229,16 +229,16 @@ function BIPContestantForm(){
                     <button type="submit">Add new Bip Contestant</button>
                 </form>
             </div>
-                <div>
+            <div>
                 <ul>
-                    {bipSelections.map((bipContestants, index) =>
-                    <li key={index}>
-                    <h3>{bipContestants.name}</h3>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    {bipSelections.map((gbContestants, index) =>
+                        <li key={index}>
+                            <h3>{gbContestants.name}</h3>
+                        <button>Edit</button>
+                        <button>Delete</button>
                     </li>)}
-                </ul>
-            </div>
+                    </ul>
+                </div>
         </div>
         )
     }
