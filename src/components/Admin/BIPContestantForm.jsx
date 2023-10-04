@@ -25,7 +25,7 @@ function BIPContestantForm(){
         EpElevenScore: 0,
         EpTwelveScore: 0
     })
-
+  
     const handleBipChange = (e) => {
         const { name, value } = e.target;
         setBipContestantInfo({...bipContestantInfo, [name]: value })
