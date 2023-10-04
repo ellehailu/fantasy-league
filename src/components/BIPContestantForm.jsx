@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 
 
@@ -6,8 +7,6 @@ function BIPContestantForm(){
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [bipSelections, setBipSelections] = useState([]);
-    const [isEditMode, setIsEditMode] = useState(false);
-    const [editingContestant, setEditingContestant] = useState(null);
     const [bipContestantInfo, setBipContestantInfo] = useState({
         name:'',
         pastAppearance:'',
@@ -27,38 +26,6 @@ function BIPContestantForm(){
         EpTwelveScore: 0
     })
 
-    const handleEditClick = (contestant) => {
-        setEditingContestant(contestant);
-        setIsEditMode(true);
-    }
-
-    const handleEditBipSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await fetch ('https://localhost:5001/api/Bip/${editingContestant.id)', {
-                method: 'PUT',
-                headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(bipContestantInfo)
-                });
-    
-                if (response.ok){
-                    console.log("contestant successfully edited")
-                    
-                    return<h3>BIP contestant successful edited</h3>
-                }
-                else{
-                    console.error("failed to edit bip contestant")
-                    return<h3>Failed to edit BIP contestant</h3>
-                }
-            }
-            catch (error){
-                console.error('Error', error)
-            }
-        }
-    
     const handleBipChange = (e) => {
         const { name, value } = e.target;
         setBipContestantInfo({...bipContestantInfo, [name]: value })
@@ -83,7 +50,7 @@ function BIPContestantForm(){
 
             if (response.ok){
                 console.log("new contestant successfully added")
-                
+
                 return<h3>BIP contestant successful added</h3>
             }
             else{
@@ -116,13 +83,12 @@ function BIPContestantForm(){
                 setIsLoaded(true)
                 console.log(error)
             });
-        
+
     }, [])
 
 
-
     if (error) {
-        return<h1>Error: {error}</h1>
+        return <h1>Error: {error}</h1>
     }
     else if (!isLoaded) {
         return <h1>...Loading...</h1>
@@ -136,7 +102,7 @@ function BIPContestantForm(){
             <div>
                 <h1>BIP Contestants</h1>
                 <h3>Add new Bip Contestant</h3>
-                <form onSubmit={ isEditMode ? handleEditClick : handleNewBipSubmit}>
+                <form onSubmit={handleNewBipSubmit}>
                     <input 
                     type="string" 
                     name="name"
@@ -260,35 +226,22 @@ function BIPContestantForm(){
                     value={bipContestantInfo.epTweleveScore}
                     onChange={handleBipChange}>
                     </input>
-                    <button type="submit">
-                        {isEditMode ? 'Save Changes' : 'Add new Bip Contestant'}
-                    </button>
+                    <button type="submit">Add new Bip Contestant</button>
                 </form>
             </div>
                 <div>
                 <ul>
                     {bipSelections.map((bipContestants, index) =>
                     <li key={index}>
-                        {isEditMode && editingContestant && editingContestant.id == bipContestants.id ? (
-                            <div>
-                                <h3>{bipContestants.name}</h3>
-                                <form onSubmit={handleEditBipSubmit}>
-                                    <h3>form edit</h3>
-                                </form>
-                            </div>
-                        ) : (
-                            <div>
-                                <h3>{bipContestants.name}</h3>
-                                <button onClick={() => handleEditClick(bipContestants.id)}>Edit</button>
-                                <button>Delete</button>
-                            </div>
-                        )}
+                    <h3>{bipContestants.name}</h3>
+                    <button>Edit</button>
+                    <button>Delete</button>
                     </li>)}
                 </ul>
             </div>
         </div>
         )
     }
-
 }
+
 export default BIPContestantForm;
