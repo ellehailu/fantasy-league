@@ -1,15 +1,14 @@
 import AccountManagement from "./AccountManagement";
 import useUser from "../hooks/UseUser";
 import SplashPage from "./SplashPage";
-import Seasons from "./Seasons";
-import WeeklyDraft from "./WeeklyDraft"
-import Leaderboard from "./LeaderBoard";
+
+
 
 // import Leaderboard from "./Leaderboard";
 
 function Home() {
 
-    const [loggedIn, user] = useUser()
+    const [user] = useUser()
     // const auth = getAuth();
 
 
@@ -24,8 +23,8 @@ function Home() {
     else {
         return (
             <div>
-                <h6>Welcome to the bachelor franchise fantasy league</h6>
-                <p>Please register for an account or login</p>
+                <h1>Welcome to the bachelor franchise fantasy league</h1>
+                <h2>Please register for an account or login</h2>
                 <AccountManagement />
             </div>
         )

@@ -13,7 +13,7 @@ function WeeklyDraft() {
     const [weeklyBipSelections, setWeeklyBipSelections] = useState([])
     const [gbSelections, setGbSelections] = useState([]);
     const [bipSelections, setBipSelections] = useState([])
-    const [loggedIn, user] = useUser()
+    const [loggedin, user] = useUser()
 
 
     // Make two forms and two separate post requests 
@@ -26,17 +26,18 @@ function WeeklyDraft() {
         // create new variable key/value with player contestant properties
         const submitGbDraft = {
             fbID: user.uid,
-            
+            email: user.email,
             SelectionOneGb: weeklyGbSelections[0],
             SelectionTwoGb: weeklyGbSelections[1],
             SelectionThreeGb: weeklyGbSelections[2],
             SelectionFourGb: weeklyGbSelections[3],
             SelectionFiveGb: weeklyGbSelections[4],
-            PlayerGbEpisodeTotal: weeklyGbSelections.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0),
-            weekNumber: 0
+            // PlayerGbEpisodeTotal: weeklyGbSelections.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0),
+            weekNumber: episodeNumber
         }
         console.log(user.uid)
         console.log(submitGbDraft)
+        console.log
 
         // Make a post request to API
         try {
@@ -60,17 +61,37 @@ function WeeklyDraft() {
         }
     }
 
+    let entryDate = new Date(); 
+    let episodeNumber = 0;
+
+// Define the start date for episode 1 (September 29, 2023)
+    const startDate = new Date('2023-09-29');
+
+    // Calculate the number of milliseconds per week
+    const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000;
+
+    // Calculate the number of weeks between the entryDate and the start date
+    const weeksDifference = Math.floor((entryDate - startDate) / millisecondsPerWeek);
+
+    // Increment the episodeNumber based on the number of weeks
+    episodeNumber = Math.min(12, Math.max(2, 2 + weeksDifference));
+
+    console.log(`Episode Number for ${entryDate.toISOString().slice(0, 10)}: ${episodeNumber}`);
+
+    console.log(episodeNumber)
+
     const handleBipSubmit = async (event) => {
         event.preventDefault();
         const submitBipDraft = {
             fbID: user.uid,
+            email: user.email,
             SelectionOneBip: weeklyBipSelections[0],
             SelectionTwoBip: weeklyBipSelections[1],
             SelectionThreeBip: weeklyBipSelections[2],
             SelectionFourBip: weeklyBipSelections[3],
             SelectionFiveBip: weeklyBipSelections[4],
-            PlayerBipEpisodeTotal: weeklyBipSelections.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0),
-            weekNumber: 0
+            // PlayerBipEpisodeTotal: weeklyBipSelections.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0),
+            weekNumber: episodeNumber
         }
         console.log(user.uid)
         console.log(submitBipDraft)
