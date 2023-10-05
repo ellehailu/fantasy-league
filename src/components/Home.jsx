@@ -8,7 +8,7 @@ import SplashPage from "./SplashPage";
 
 function Home() {
 
-    const [user] = useUser()
+    const [loggedIn, user] = useUser()
     // const auth = getAuth();
 
 

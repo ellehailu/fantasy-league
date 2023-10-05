@@ -13,7 +13,7 @@ function WeeklyDraft() {
     const [weeklyBipSelections, setWeeklyBipSelections] = useState([])
     const [gbSelections, setGbSelections] = useState([]);
     const [bipSelections, setBipSelections] = useState([])
-    const [loggedin, user] = useUser()
+    const [loggedIn, user] = useUser()
 
 
     // Make two forms and two separate post requests 
