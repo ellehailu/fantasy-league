@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import EditBipContestant from "./EditBipContestantForm";
 
 
 function BIPContestantForm(){
@@ -138,7 +139,7 @@ function BIPContestantForm(){
                             type="radio"
                             name="status"
                             value="InActive"
-                            checked={bipContestantInfo.status === 'Active'}
+                            checked={bipContestantInfo.status === 'InActive'}
                             onChange={handleBipStatusChange}/>InActive
                         </label>
                     </div>
@@ -231,10 +232,10 @@ function BIPContestantForm(){
             </div>
             <div>
                 <ul>
-                    {bipSelections.map((gbContestants, index) =>
+                    {bipSelections.map((bipContestants, index) =>
                         <li key={index}>
-                            <h3>{gbContestants.name}</h3>
-                        <button>Edit</button>
+                            <h3>{bipContestants.name}</h3>
+                        <EditBipContestant contestant={bipContestants}/>
                         <button>Delete</button>
                     </li>)}
                     </ul>
