@@ -39,7 +39,6 @@ function Leaderboard(){
     else if(!isLoaded) {
         return<h1>...Loading...</h1>
     }
-
     return (
         <div className="LeaderboardContainer">
             <div className="BIPLeaderboardContainer">
@@ -47,7 +46,7 @@ function Leaderboard(){
                 <h2>Bachelor in Paradise Leaderboard</h2>
                 {leaderboard.map((players, index) => (
                     <li key={index}>
-                        {players.fbID}: {players.playerSeasonTotal}
+                        {players. email}
                     </li>
                 ))}
             </ol>
@@ -57,7 +56,8 @@ function Leaderboard(){
                 <h2>Golden Bachelor Leaderboard</h2>
                 {leaderboard.map((players, index) => (
                     <li key={index}>
-                        {players.fbID}: {players.PlayerGbEpisodeTotal}
+                        
+                        {players.email}
                     </li>
                 ))}
             </ol>
