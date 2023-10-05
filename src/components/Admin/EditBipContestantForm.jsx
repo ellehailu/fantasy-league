@@ -1,5 +1,5 @@
-import React, {useState} from "react"
-
+import {useState} from "react"
+import PropTypes from "prop-types"
 
 function EditBipContestant(props){
 
@@ -17,7 +17,27 @@ function EditBipContestant(props){
     const [epElevenScore, setEpElevenScore] = useState(props.contestant.epElevenScore)
     const [epTwelveScore, setEpTwelveScore] = useState(props.contestant.epTwelveScore)
 
-    
+    EditBipContestant.propTypes = {
+        contestant: PropTypes.shape({
+          bipContestantId: PropTypes.number.isRequired,
+          name: PropTypes.string.isRequired,
+          status: PropTypes.oneOf(['Active', 'InActive']).isRequired,
+          pastAppearance: PropTypes.string.isRequired,
+          photo: PropTypes.string.isRequired,
+          epOneScore: PropTypes.number.isRequired,
+          epTwoScore: PropTypes.number.isRequired,
+          epThreeScore: PropTypes.number.isRequired,
+          epFourScore: PropTypes.number.isRequired,
+          epFiveScore: PropTypes.number.isRequired,
+          epSixScore: PropTypes.number.isRequired,
+          epSevenScore: PropTypes.number.isRequired,
+          epEightScore: PropTypes.number.isRequired,
+          epNineScore: PropTypes.number.isRequired,
+          epTenScore: PropTypes.number.isRequired,
+          epElevenScore: PropTypes.number.isRequired,
+          epTwelveScore: PropTypes.number.isRequired,
+        }).isRequired,
+      };
 
     const handleEdit = async (e) => {
         e.preventDefault();
