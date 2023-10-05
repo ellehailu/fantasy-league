@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import EditGbContestant from "./EditGbContestant";
 
 function GBContestantForm(){
 
@@ -121,6 +122,13 @@ function GBContestantForm(){
                         onChange={handleGbChange}>
                         </input>
                         <input 
+                        type="number" 
+                        name="age"
+                        placeholder="age" 
+                        value={gbContestantInfo.age}
+                        onChange={handleGbChange}>
+                        </input>
+                        <input 
                         type="string" 
                         name="bio"
                         placeholder="bio" 
@@ -236,7 +244,7 @@ function GBContestantForm(){
                         value={gbContestantInfo.epTweleveScore}
                         onChange={handleGbChange}>
                         </input>
-                        <button type="submit">Add new Bip Contestant</button>
+                        <button type="submit">Add new GB Contestant</button>
                     </form>
                 </div>  
                 <h1>GB Contestants</h1>
@@ -245,7 +253,7 @@ function GBContestantForm(){
                         {gbSelections.map((gbContestants, index) =>
                             <li key={index}>
                                 <h3>{gbContestants.name}</h3>
-                            <button>Edit</button>
+                            <EditGbContestant contestant={gbContestants}/>
                             <button>Delete</button>
                     </li>)}
                     </ul>

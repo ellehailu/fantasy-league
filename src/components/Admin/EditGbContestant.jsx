@@ -1,7 +1,7 @@
-import {useState} from "react"
+import { useState } from "react"
 import PropTypes from "prop-types"
 
-function EditBipContestant(props){
+function EditGbContestant(props) {
 
     const [status, setStatus] = useState(props.contestant.status)
     const [epOneScore, setEpOneScore] = useState(props.contestant.epOneScore)
@@ -17,98 +17,114 @@ function EditBipContestant(props){
     const [epElevenScore, setEpElevenScore] = useState(props.contestant.epElevenScore)
     const [epTwelveScore, setEpTwelveScore] = useState(props.contestant.epTwelveScore)
 
-    EditBipContestant.propTypes = {
+    EditGbContestant.propTypes = {
         contestant: PropTypes.shape({
-          bipContestantId: PropTypes.number.isRequired,
-          name: PropTypes.string.isRequired,
-          status: PropTypes.oneOf(['Active', 'InActive']).isRequired,
-          pastAppearance: PropTypes.string.isRequired,
-          photo: PropTypes.string.isRequired,
-          epOneScore: PropTypes.number.isRequired,
-          epTwoScore: PropTypes.number.isRequired,
-          epThreeScore: PropTypes.number.isRequired,
-          epFourScore: PropTypes.number.isRequired,
-          epFiveScore: PropTypes.number.isRequired,
-          epSixScore: PropTypes.number.isRequired,
-          epSevenScore: PropTypes.number.isRequired,
-          epEightScore: PropTypes.number.isRequired,
-          epNineScore: PropTypes.number.isRequired,
-          epTenScore: PropTypes.number.isRequired,
-          epElevenScore: PropTypes.number.isRequired,
-          epTwelveScore: PropTypes.number.isRequired,
-        }).isRequired,
-      };
+            gbContestantId: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            age: PropTypes.number.isRequired,
+            status: PropTypes.oneOf(['Active', 'InActive']).isRequired,
+            hometown: PropTypes.string.isRequired,
+            occupation: PropTypes.string.isRequired,
+            bio: PropTypes.string.isRequired,
+            photo: PropTypes.string.isRequired,
+            epOneScore: PropTypes.number.isRequired,
+            epTwoScore: PropTypes.number.isRequired,
+            epThreeScore: PropTypes.number.isRequired,
+            epFourScore: PropTypes.number.isRequired,
+            epFiveScore: PropTypes.number.isRequired,
+            epSixScore: PropTypes.number.isRequired,
+            epSevenScore: PropTypes.number.isRequired,
+            epEightScore: PropTypes.number.isRequired,
+            epNineScore: PropTypes.number.isRequired,
+            epTenScore: PropTypes.number.isRequired,
+            epElevenScore: PropTypes.number.isRequired,
+            epTwelveScore: PropTypes.number.isRequired,
+          }).isRequired,
+    };
 
     const handleEdit = async (e) => {
         e.preventDefault();
         try{
-            const editBipContestant = {
-                bipContestantId: props.contestant.bipContestantId,
-                name: props.contestant.name,
-                status: status,
-                pastAppearance: props.contestant.pastAppearance,
-                photo: props.contestant.photo,
-                epOneScore: epOneScore,
-                epTwoScore: epTwoScore,
-                epThreeScore: epThreeScore,
-                epFourScore: epFourScore,
-                epFiveScore: epFiveScore,
-                epSixScore: epSixScore,
-                epSevenScore: epSevenScore,
-                epEightScore: epEightScore,
-                epNineScore: epNineScore,
-                epTenScore: epTenScore,
-                epElevenScore: epElevenScore,
-                epTwelveScore: epTwelveScore
-                // do this for all other episodes and status
+            const editGbContestant = {
+            gbContestantId: props.contestant.gbContestantId,
+            name: props.contestant.name,
+            age: props.contestant.age,
+            status: status,
+            hometown: props.contestant.hometown,
+            occupation: props.contestant.occupation,
+            bio: props.contestant.bio,
+            photo: props.contestant.photo,
+            epOneScore: epOneScore,
+            epTwoScore: epTwoScore,
+            epThreeScore: epThreeScore,
+            epFourScore: epFourScore,
+            epFiveScore: epFiveScore,
+            epSixScore: epSixScore,
+            epSevenScore: epSevenScore,
+            epEightScore: epEightScore,
+            epNineScore: epNineScore,
+            epTenScore: epTenScore,
+            epElevenScore: epElevenScore,
+            epTwelveScore: epTwelveScore,
             };
 
-            const response = await fetch(`https://localhost:5001/api/Bip/${props.contestant.bipContestantId}`, {
+            const response = await fetch(`https://localhost:5001/api/Gb/${props.contestant.gbContestantId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(editBipContestant)
+                body: JSON.stringify(editGbContestant)
             });
 
-            if (response.ok){
-                console.log("BIP contestant updated")
-
+            if (response.ok) {
+                console.log("GB contestant updated")
             }
-            else{
-                console.error("failed to update bip contestant")
-
+            else {
+                console.log("failed to update GB contestant ")
             }
         }
         catch (error){
             console.error('Error', error)
         }
-   }
-
-   //Name, past appearance, and photo are not editable. They are set to whatever is in the database and will reset to that anytime the database is updated
+    }
 
     return (
-    <form onSubmit={handleEdit}>
-                        <input 
+        <form onSubmit={handleEdit}>
+            <input 
                         type="string" 
                         name="name"
                         placeholder="name" 
                         value={props.contestant.name}>
-                        
                         </input>
                         <input 
                         type="string" 
-                        name="pastAppearance"
-                        placeholder="Past Appearance" 
-                        value={props.contestant.pastAppearance}>
-                        
+                        name="hometown"
+                        placeholder="hometown" 
+                        value={props.contestant.hometown}>
+                        </input>
+                        <input 
+                        type="string" 
+                        name="occupation"
+                        placeholder="occupation" 
+                        value={props.contestant.occupation}>
+                        </input>
+                        <input 
+                        type="number" 
+                        name="age"
+                        placeholder="age" 
+                        value={props.contestant.age}>
+                        </input>
+                        <input 
+                        type="string" 
+                        name="bio"
+                        placeholder="bio" 
+                        value={props.contestant.bio}>
                         </input>
                         <input 
                         type="string" 
                         name="photo"
                         placeholder="photo url" 
                         value={props.contestant.photo}>
-                        
                         </input>
                         <div className="statusRadioButton">
                             <label>
@@ -117,8 +133,7 @@ function EditBipContestant(props){
                                 name="status"
                                 value="Active"
                                 checked={props.contestant.status === 'Active'}
-                                onChange={(e) => setStatus(e.target.value)}/>
-                                Active
+                                onChange={(e) => setStatus(e.target.value)}/>Active
                             </label>
                             <label>
                                 <input
@@ -135,7 +150,6 @@ function EditBipContestant(props){
                         placeholder="Episode one score" 
                         value={epOneScore}
                         onChange={(e) => setEpOneScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -143,7 +157,6 @@ function EditBipContestant(props){
                         placeholder="Episode two score" 
                         value={epTwoScore}
                         onChange={(e) => setEpTwoScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -151,7 +164,6 @@ function EditBipContestant(props){
                         placeholder="Episode Three score" 
                         value={epThreeScore}
                         onChange={(e) => setEpThreeScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -159,7 +171,6 @@ function EditBipContestant(props){
                         placeholder="Episode Four score" 
                         value={epFourScore}
                         onChange={(e) => setEpFourScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -167,7 +178,6 @@ function EditBipContestant(props){
                         placeholder="Episode Five score" 
                         value={epFiveScore}
                         onChange={(e) => setEpFiveScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -175,7 +185,6 @@ function EditBipContestant(props){
                         placeholder="Episode Six score" 
                         value={epSixScore}
                         onChange={(e) => setEpSixScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -183,7 +192,6 @@ function EditBipContestant(props){
                         placeholder="Episode Seven score" 
                         value={epSevenScore}
                         onChange={(e) => setEpSevenScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -191,7 +199,6 @@ function EditBipContestant(props){
                         placeholder="Episode Eight score" 
                         value={epEightScore}
                         onChange={(e) => setEpEightScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -199,7 +206,6 @@ function EditBipContestant(props){
                         placeholder="Episode Nine score" 
                         value={epNineScore}
                         onChange={(e) => setEpNineScore(e.target.value)}>
-                        
                         </input>
                         <input 
                         type="number" 
@@ -214,23 +220,17 @@ function EditBipContestant(props){
                         placeholder="Episode Eleven score" 
                         value={epElevenScore}
                         onChange={(e) => setEpElevenScore(e.target.value)}>
-                        
                         </input>
-                        <input
+                        <input 
                         type="number" 
                         name="epTweleveScore"
                         placeholder="Episode Tweleve score" 
                         value={epTwelveScore}
                         onChange={(e) => setEpTwelveScore(e.target.value)}>
-                        
                         </input>
                         <button type="submit">Update contestant</button>
-                    </form>
+        </form>
     )
-
-    
 }
 
-
-
-export default EditBipContestant;
+export default EditGbContestant;
