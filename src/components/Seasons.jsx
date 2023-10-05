@@ -14,7 +14,7 @@ function Seasons() {
 
 
     useEffect(() => {
-        fetch(`https://localhost:5001/api/Bip`)
+        fetch(`https://contestantsapi.onrender.com/api/bip`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`${response.status}: ${response.statusText}`);
@@ -33,7 +33,7 @@ function Seasons() {
                 setIsLoaded(true)
                 console.log(error)
             });
-        fetch(`https://localhost:5001/api/Gb`)
+        fetch(`https://contestantsapi.onrender.com/api/gb`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`${response.status}: ${response.statusText}`);

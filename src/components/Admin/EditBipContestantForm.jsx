@@ -63,7 +63,7 @@ function EditBipContestant(props){
                 // do this for all other episodes and status
             };
 
-            const response = await fetch(`https://localhost:5001/api/Bip/${props.contestant.bipContestantId}`, {
+            const response = await fetch(`https://contestantsapi.onrender.com/api/bip/${props.contestant.bipContestantId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

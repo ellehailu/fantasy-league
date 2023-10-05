@@ -41,7 +41,7 @@ function BIPContestantForm(){
         e.preventDefault();
 
         try {
-            const response = await fetch('https://localhost:5001/api/Bip', {
+            const response = await fetch('https://contestantsapi.onrender.com/api/bip', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function BIPContestantForm(){
    }
 
     useEffect(() => {
-        fetch(`https://localhost:5001/api/Bip`)
+        fetch(`https://contestantsapi.onrender.com/api/bip`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`${response.status}: ${response.statusText}`);

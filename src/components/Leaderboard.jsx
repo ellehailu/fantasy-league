@@ -12,7 +12,7 @@ function Leaderboard(){
     const [leaderboard, setLeaderboard] = useState([]);
 
     useEffect(() => {
-        fetch(`https://localhost:5001/api/PlayerContestant`)
+        fetch(`https://contestantsapi.onrender.com/api/playerContestant`)
         .then(response => {
             if(!response.ok){
                 throw new Error(`${response.status}: ${response.statusText}`);

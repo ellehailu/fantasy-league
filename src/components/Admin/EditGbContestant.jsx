@@ -68,7 +68,7 @@ function EditGbContestant(props) {
             epTwelveScore: epTwelveScore,
             };
 
-            const response = await fetch(`https://localhost:5001/api/Gb/${props.contestant.gbContestantId}`, {
+            const response = await fetch(`https://contestantsapi.onrender.com/api/gb/${props.contestant.gbContestantId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

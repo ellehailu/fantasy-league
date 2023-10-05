@@ -42,7 +42,7 @@ function GBContestantForm(){
     
 
         try {
-            const response = await fetch('https://localhost:5001/api/Gb', {
+            const response = await fetch('https://contestantsapi.onrender.com/api/gb', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ function GBContestantForm(){
     }
 
     useEffect(() => {
-        fetch(`https://localhost:5001/api/Gb`)
+        fetch(`https://contestantsapi.onrender.com/api/gb`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`${response.status}: ${response.statusText}`);
