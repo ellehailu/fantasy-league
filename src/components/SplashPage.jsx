@@ -27,7 +27,7 @@ function SplashPage() {
                     <li className='listContainer' onClick={() => handleItemClick(<Leaderboard />)}>Leaderboard</li>
                     <li className='listContainer' onClick={() => handleItemClick(<WeeklyDraft />)}>Weekly Draft</li>
                     <li className='listContainer' onClick={() => handleItemClick(<Seasons />)}>Other Seasons</li>
-                    <li className='listContainer' onClick={() => handleItemClick(<AdminUI />)}>Admin UI</li>
+                    <li className='listContainer' onClick={() => handleItemClick(<AdminUI />)}>Admin</li>
                     </ul>
                     {selectedComponent}
                 </div>

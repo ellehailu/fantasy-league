@@ -16,6 +16,7 @@ function Home() {
     if (user) {
         return (
             <div>
+                <h2>Welcome {user.email}</h2>
                 <SplashPage />
             </div>
         );
