@@ -199,6 +199,10 @@ function WeeklyDraft() {
         return <h1>...Loading...</h1>
     }
 
+    const activeBipSelections = bipSelections.filter((bipContestant) => bipContestant.status === "Active");
+
+    const activeGbSelections = gbSelections.filter((gbContestant) => gbContestant.status === "Active")
+
     console.log(weeklyGbSelections)
     return (
         <div className="weeklyDraft">
@@ -210,7 +214,7 @@ function WeeklyDraft() {
                 <div className="GbWeeklyDraft">
                     <h1>Golden Bachelor Selections</h1>
                     <ul>
-                        {gbSelections.map((gbContestants, index) => (
+                        {activeGbSelections.map((gbContestants, index) => (
                             <li key={index}>
                                 <label className="label">
                                     <input
@@ -235,7 +239,7 @@ function WeeklyDraft() {
             <div className="BipWeeklyDraft">
                     <h1>Bachelor in Paradise Selections</h1>
                     <ul>
-                        {bipSelections.map((bipContestants, index) => (
+                        {activeBipSelections.map((bipContestants, index) => (
                             <li key={index}>
                                 <label className="label">
                                     <input
