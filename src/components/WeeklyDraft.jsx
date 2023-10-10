@@ -203,7 +203,7 @@ function WeeklyDraft() {
     return (
         <div className="weeklyDraft">
             <div>
-            <h2>Gb selections: {weeklyGbSelections}</h2>
+            
             <h1>Weekly Draft</h1>
             
                 <form onSubmit={handleGbSubmit}>
@@ -227,12 +227,12 @@ function WeeklyDraft() {
                         ))}
                     </ul>
                     </div>
+                    <h2>Gb selections: {weeklyGbSelections}</h2>
                     <button type="submit">Save Golden Bachelor Selections</button>
                 </form>
             </div>
             <form onSubmit={handleBipSubmit}>
             <div className="BipWeeklyDraft">
-            <h2>BIh2 Selections: {weeklyBipSelections}</h2>
                     <h1>Bachelor in Paradise Selections</h1>
                     <ul>
                         {bipSelections.map((bipContestants, index) => (
@@ -251,6 +251,7 @@ function WeeklyDraft() {
                         ))}
                     </ul>
                     </div>
+                    <h2>BIP Selections: {weeklyBipSelections}</h2>
                     <button type="submit">Save BIP selections</button>
                     </form>
         </div>

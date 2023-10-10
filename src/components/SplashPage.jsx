@@ -4,6 +4,7 @@ import Leaderboard from "./LeaderBoard";
 import WeeklyDraft from "./WeeklyDraft";
 import Seasons from "./Seasons";
 import AdminUI from "./Admin/AdminUI"
+import About from "./About";
 
 function SplashPage() {
 
@@ -27,6 +28,7 @@ function SplashPage() {
                     <li className='listContainer' onClick={() => handleItemClick(<Leaderboard />)}>Leaderboard</li>
                     <li className='listContainer' onClick={() => handleItemClick(<WeeklyDraft />)}>Weekly Draft</li>
                     <li className='listContainer' onClick={() => handleItemClick(<Seasons />)}>Other Seasons</li>
+                    <li className='listContainer' onClick={() => handleItemClick(<About />)}>About</li>
                     <li className='listContainer' onClick={() => handleItemClick(<AdminUI />)}>Admin</li>
                     </ul>
                     {selectedComponent}
