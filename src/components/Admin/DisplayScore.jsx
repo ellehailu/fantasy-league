@@ -59,6 +59,7 @@ function DisplayScore() {
         return (
             <div>
                 <ul>
+                    <h3>Player selections</h3>
                     {playerSelection.map((playersContestants, index) =>
                     <li key={index}>
                         <h3>{playersContestants.email}</h3>
